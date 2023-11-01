@@ -1,0 +1,10 @@
+psycopg2-binary
+gunicorn==20.1.0
+django==3.2.16
+djangorestframework==3.14.0
+rpy2==3.4.5
+psycopg2==2.9.5
+networkx==2.1
+pyyaml
+python-dateutil
+drf-yasg

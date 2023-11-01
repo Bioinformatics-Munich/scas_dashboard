@@ -1,0 +1,70 @@
+version: '3.9'
+
+services:
+  scas-backend:
+    restart: unless-stopped
+    image: scas-backend:latest
+    container_name: scas-backend
+    build: 
+        context: ../
+        dockerfile: ./docker/scas-backend/Dockerfile
+    expose:
+      - 8000          # Django  / don't expose
+    env_file:
+      - ./dashboard.env
+    links:
+      - scas-postgres:postgres
+    volumes:
+      - usr_src_app_staticfiles:/usr/src/backend/static
+      - ../scripts:/scripts
+  scas-frontend:
+    restart: unless-stopped
+    image: scas-frontend:latest
+    container_name: scas-frontend
+    build: 
+        context: ../
+        dockerfile: ./docker/scas-frontend/Dockerfile
+    expose:
+      - 3838          # shiny  / don't expose
+    # ports:
+    #  - 3838:3838
+    env_file:
+      - ./dashboard.env
+    links:
+      - scas-backend:backend
+
+  scas-nginx:
+    restart: unless-stopped
+    image: scas-nginx:latest
+    container_name: scas-nginx
+    build: 
+        context: ../
+        dockerfile: ./docker/nginx-prod/Dockerfile
+        args:
+          SELF_SIGNED_SSL: true
+    ports:
+      - 80:80         # expose ports - HOST:CONTAINER
+      - 443:443
+    volumes_from:
+      - scas-backend
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    #volumnes:
+    #   - ./docker/dashboard.pem:/etc/dashboard.pem
+
+  scas-postgres:
+    restart: unless-stopped
+    image: postgres:9.5
+    container_name: scas-postgres
+    expose:
+      - 5432          # postgres / don't expose    
+    env_file:
+      - ./dashboard.env
+    volumes:
+      - pgdatascas:/var/lib/postgresql/data/
+
+volumes:
+  pgdatascas:
+  usr_src_app_staticfiles:
+

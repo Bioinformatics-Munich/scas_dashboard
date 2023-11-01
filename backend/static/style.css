@@ -1,0 +1,17 @@
+.centerhead h2 {
+  text-align: center;
+}
+
+.reveal h1 {
+  color: white;
+}
+
+.quarto-title-author-name{
+  color: white;
+}
+
+.reveal p{
+  text-align: center;
+  height: auto
+  width: auto
+}

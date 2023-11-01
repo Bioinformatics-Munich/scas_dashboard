@@ -1,0 +1,48 @@
+- model: ClusterAdminStatsApp.Settings
+  pk: 1
+  fields:
+    name: presentation_n_month_back
+    value: 6
+    description: For how many month in the past the presentation should be generated
+- model: ClusterAdminStatsApp.Settings
+  pk: 2
+  fields:
+    name: slide_speed
+    value: 10000
+    description: Auto play of slides speed in ms
+- model: ClusterAdminStatsApp.Settings
+  pk: 3
+  fields:
+    name: slide_title
+    value: HPC cluster stats
+    description: Title on titleslide
+- model: ClusterAdminStatsApp.Settings
+  pk: 4
+  fields:
+    name: slide_subtitle
+    value: SCAS dashboard
+    description: Subtitle on titleslide
+- model: ClusterAdminStatsApp.Settings
+  pk: 5
+  fields:
+    name: slide_footer
+    value: SCAS dashboard
+    description: Slide footer    
+- model: ClusterAdminStatsApp.Settings
+  pk: 6
+  fields:
+    name: slide_width
+    value: 90%
+    description: Slide width in %
+- model: ClusterAdminStatsApp.Settings
+  pk: 7
+  fields:
+    name: slide_height
+    value: 90%
+    description: Slide height in %
+- model: ClusterAdminStatsApp.Settings
+  pk: 8
+  fields:
+    name: slide_image_size
+    value: 1000
+    description: Slide image height size must be in px    
