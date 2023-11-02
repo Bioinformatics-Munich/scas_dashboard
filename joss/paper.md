@@ -13,25 +13,25 @@ tags:
 authors:
   - name: Thomas Walzthoeni
     affiliation: 1
-	corresponding: true
-	orcid: 0009-0009-3995-709X
+    corresponding: true
+    orcid: 0009-0009-3995-709X
   - name: Bom Bahadur Singiali
     affiliation: 2
   - name: N. William Rayner
     affiliation: 3
-	orcid: 0000-0003-0510-4792
+    orcid: 0000-0003-0510-4792
   - name: Francesco Paolo Casale
     affiliation: "4,5,6"
   - name: Christoph Feest
     affiliation: "4,7"	
-	orcid: 0000-0002-0772-7267
+    orcid: 0000-0002-0772-7267
   - name: Carsten Marr
     affiliation: 4
-	orcid: 0000-0003-2154-4552
+    orcid: 0000-0003-2154-4552
   - name: Alf Wachsmann
     affiliation: 2
-	orcid: 0000-0002-7736-3059  
-	
+    orcid: 0000-0002-7736-3059
+
 affiliations:
  - name: Core Facility Genomics, Helmholtz Zentrum München - German Research Center for Environmental Health, 85764 Neuherberg, Germany
    index: 1
