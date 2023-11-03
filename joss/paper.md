@@ -51,8 +51,7 @@ affiliations:
 date: 30 August 2023
 bibliography: paper.bib
 ---
-Summary
-=======
+# Summary
 
 Many organizations offer High Performance Computing (HPC) environments
 as a service, hosted on-premises or in the cloud. Compute jobs are
@@ -65,8 +64,7 @@ allows HPC stakeholders to easily analyze and identify bottlenecks of
 Slurm-based compute clusters in a timely fashion and provides
 decision-making support for managing cluster resources.
 
-Statement of need
-=================
+# Statement of need
 
 Slurm [@slurm] is an open-source cluster management and job
 scheduling system for Linux-based compute clusters and is widely used
@@ -89,11 +87,9 @@ low-memory footprint and to be fast and responsive to user queries. The
 software stack is provided in an easy-to-use and easy-to-deploy manner
 using docker containers and a docker-compose implementation.
 
-Description
-===========
+# Description
 
-SCAS Dashboard overview
------------------------
+## SCAS Dashboard overview
 
 The SCAS dashboard architecture consists of a nginx web server as a
 router (reverse proxy), a frontend based on R-Shiny [@shiny; @R;
@@ -120,8 +116,7 @@ SCAS-backend and PostgresSQL database. A docker-compose implementation
 of the services is provided. \label{fig:fig1}](figures/Figure1.png){
 width=100% }
 
-SCAS dashboard workflow
------------------------
+## SCAS dashboard workflow
 
 Completed compute jobs and available node configurations are submitted
 to the SCAS-backend API with a script that utilizes the Slurm's *sacct*
@@ -134,8 +129,7 @@ filtering a date range in the frontend, a request is sent to the backend
 which retrieves the data for the selected days and aggregates the
 statistics to generate the visualizations.
 
-Frontend -- dashboard user interface
-------------------------------------
+## Frontend -- dashboard user interface
 
 \autoref{fig:fig2} displays some example views of the user interface.
 The date range, the cluster, and the partitions that should be analyzed
@@ -162,16 +156,14 @@ For the selected date range, the visualizations include:
 
 The data can also be downloaded for use in spreadsheet applications.
 
-Frontend -- automated presentation
-----------------------------------
+## Frontend -- automated presentation
 
 For presenting key figures to the cluster users, a feature is available
 to generate a browser-based presentation in carousel mode. The
 presentation is auto-updated and customization settings are available
 via the admin interface.
 
-SCAS dashboard - example use case
----------------------------------
+## SCAS dashboard - example use case
 
 To exemplify an analysis with the SCAS dashboard, we assumed that users
 reported longer pending times for GPU resources in recent months. We
@@ -205,8 +197,7 @@ The positive error bars indicate the standard deviation. **g**. Line
 plot showing the utilization of nodes with different numbers of GPUs.
 \label{fig:fig2}](figures/Figure2.png){ width=100% }
 
-Conclusion and Availability
----------------------------
+# Conclusion and Availability
 
 The SCAS dashboard enables rapid and responsive analysis of Slurm-based
 cluster usage. This allows stakeholders: I) to identify current
@@ -219,8 +210,7 @@ The repository also contains a docker-compose file for rapid deployment
 and testing of the software, as well as a program to generate test data
 for the dashboard.
 
-Acknowledgements 
-================
+# Acknowledgements 
 
 We acknowledge the Institute of Computational Biology (Prof. Dr. Dr.
 Fabian Theis) at Helmholtz Munich for supporting the development of the
