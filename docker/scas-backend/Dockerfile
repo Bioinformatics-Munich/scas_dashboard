@@ -29,8 +29,8 @@ ADD ./app /usr/src/app
 
 # Copy code to backend directory
 ADD ./backend /usr/src/backend
-RUN rm -r /usr/src/backend/ClusterAdminStatsApp/migrations/*
-RUN rm -r /usr/src/backend/ClusterAdminStatsApp/__pycache__/*
+RUN rm -rf /usr/src/backend/ClusterAdminStatsApp/migrations/*
+RUN rm -rf /usr/src/backend/ClusterAdminStatsApp/__pycache__/*
 RUN pip install -r /usr/src/backend/requirements.txt
 
 # Django
