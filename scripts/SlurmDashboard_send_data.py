@@ -163,6 +163,9 @@ else:
 # Get the numrows
 nrows=len(df.index)
 
+# Some have Start=None, filter
+df=df.loc[df['Start'] != "None"]
+
 # Split upload into chunks of 100k
 junksize=args.junksize
 njunks=math.ceil(nrows / junksize)

@@ -96,7 +96,7 @@ class Jobs(models.Model):
     Start=models.DateTimeField()
     End=models.DateTimeField()
     NodeList=models.CharField(max_length=3000)
-    ReqTRES=models.CharField(max_length=50)
+    ReqTRES=models.CharField(max_length=3000)
     ReqGPUS=models.IntegerField()
     Node=models.CharField(max_length=50)
     Reason=models.CharField(max_length=250,default="None")
