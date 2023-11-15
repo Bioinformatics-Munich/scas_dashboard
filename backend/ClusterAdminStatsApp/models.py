@@ -51,13 +51,21 @@ class Nodes(models.Model):
         """
         # set GPUs
         if node.GRES:
-            d = dict(x.rsplit(":",1) for x in node.GRES.split(","))
-            # Also check if we need to split the keys could be gpu:a100_3g.20gb
+            d = dict(x.split(":",1) for x in node.GRES.split(","))
+            # Also check if we need to split the keys could be gpu:a100_3g.20gb:4(S:0-1) or gpu:2(S:0-1),mps:1K(S:0-1)
+            # print(d)
             d2={}
             for dk in d:
                 d2[dk.split(":")[0]]=d[dk]
             if 'gpu' in d2:
-                node.GPUS = int(d2['gpu'])
+                # can be 2, 2(S:0-1) or a100_3g.20gb:4(S:0-1)
+                # split first on : 
+                sp = d2['gpu'].split(":")
+                if len(sp) > 2:
+                    ngpus = sp[1].split("(",1)[0]
+                else:
+                    ngpus = sp[0].split("(",1)[0]
+                node.GPUS = int(ngpus)
             else:
                 node.GPUS = 0
         else:

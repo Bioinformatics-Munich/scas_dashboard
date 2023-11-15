@@ -43,6 +43,9 @@ ENV LD_LIBRARY_PATH /usr/local/lib/R/lib:/usr/local/lib:/usr/lib/x86_64-linux-gn
 COPY ./docker/scas-backend/run_script.sh run_script.sh
 COPY ./docker/scas-backend/init.sh init.sh
 
+# Chmod init.sh
+RUN chmod 755 /usr/src/backend/init.sh
+
 # Run script
 RUN chmod 750 run_script.sh
 CMD /usr/src/backend/run_script.sh
