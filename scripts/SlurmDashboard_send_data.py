@@ -163,8 +163,9 @@ else:
 # Get the numrows
 nrows=len(df.index)
 
-# Some have Start=None, filter
+# Some jobs have Start=None, or Start=Unknown filter
 df=df.loc[df['Start'] != "None"]
+df=df.loc[df['Start'] != "Unknown"]
 
 # Split upload into chunks of 100k
 junksize=args.junksize
