@@ -34,6 +34,8 @@ For presentation of the key figures to the cluster users, a presentation that ca
 ## Prerequisites
 Install Docker and docker-compose  
 Clone the repository and change to the `docker` directory.  
+*Note that depending on the docker-compose installation the syntax of the commands is diferent. For the standalone docker-compose installation the command `docker compose` is `docker-compose`.
+For example type `docker-compose up -d` when using compose standalone, instead of `docker compose up -d`.*
 
 ## SSL certificate
 Per default a self signed certificate is generated.  
@@ -42,9 +44,9 @@ Bind mount your certicicate (certificate+key in one file) to `/etc/dashboard.pem
 
 ## Build and start containers
 Build images an run docker-compose to start the containers (nginx, frontend, backend, postgres):  
-To build: `docker-compose build`   
-Run in detached mode: `docker-compose up -d`   
-Forced rebuild of images: `docker-compose build --no-cache`  
+To build: `docker compose build`   
+Run in detached mode: `docker compose up -d`   
+Forced rebuild of images: `docker compose build --no-cache`  
 
 # Initial setup with test data
 This setup is intended for testing and will load the test data.  
@@ -66,7 +68,7 @@ Go to https://yourserver.edu/admin/ and login with the superuser account (user+p
 Alternative, you can also delete the postgres container and volume:  
 *Warning:* This deletes the database volume and the database container, check beforehand the names of your container and volume with `docker ps -a` and `docker volume ls`.   
 ```
-docker-compose stop
+docker compose stop
 docker rm scas-postgres
 docker volume rm docker_pgdatascas
 ```
@@ -78,7 +80,10 @@ Database settings can be changed in the file `docker/dashboard.env`
 ```
 cd docker
 docker exec scas-backend /usr/src/backend/init.sh
-Create a superuser (and password) with: `docker-compose run scas-backend python3 manage.py createsuperuser`
+```
+Create a superuser (and password) with:  
+```
+docker compose run scas-backend python3 manage.py createsuperuser
 ```
 
 ## Create additional users
