@@ -50,8 +50,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-    #volumnes:
-    #   - ./docker/dashboard.pem:/etc/dashboard.pem
+    #volumes:
+    #   - ./dashboard.pem:/etc/dashboard.pem
 
   scas-postgres:
     restart: unless-stopped
