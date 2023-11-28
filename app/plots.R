@@ -395,7 +395,7 @@ util_per_day_cpu = function(datalist=datalist, base_size=7){
     geom_tile(aes(fill = UtilCat),color = "black",lwd = 0.25,linetype = 1) +
     ylab("Year-month") + xlab("Day") + colScale + theme_bw(base_size = base_size) +
     scale_x_discrete(expand=c(0,0)) +
-    scale_y_discrete(expand=c(0,0)) + labs(title = "Utilization % per day") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+    scale_y_discrete(expand=c(0,0)) + labs(title = "Utilization of CPUs", subtitle="% per day") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
   
   rf=prop.table(table(tmp$UtilCat))
   p2 = ggplot(data=data.frame(rf), aes(x=Var1, y=Freq)) + geom_bar(stat="identity", color="black", fill=myColors) + 
@@ -458,7 +458,7 @@ util_per_day_gpu = function(datalist=datalist, base_size=7){
     geom_tile(aes(fill = UtilCat),color = "black",lwd = 0.25,linetype = 1) +
     ylab("Year-month") + xlab("Day") + colScale + theme_bw(base_size = base_size) +
     scale_x_discrete(expand=c(0,0)) +
-    scale_y_discrete(expand=c(0,0)) + labs(title = "Utilization % per day") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  
+    scale_y_discrete(expand=c(0,0)) + labs(title = "Utilization of GPUs", subtitle="% per day") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  
   
   #p1
   

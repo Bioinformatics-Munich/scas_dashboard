@@ -153,20 +153,20 @@ def publicdash(request):
     combined=robjects.r.combine_lineplots(lineplot1=p1,lineplot2=p2,lineplot3=p3 )
     robjects.r.ggsave(plot=combined, filename=settings.MEDIA_ROOT+"/lplots.png", width=15, height=12)
 
-    cont_plot1 = robjects.r.cont_plot1(datalist=datalist, txtsize=int(6), base_size=int(18))
-    robjects.r.ggsave(plot=cont_plot1, filename=settings.MEDIA_ROOT+"/cont_plot1.png", width=15, height=6)
-    cont_plot2 = robjects.r.cont_plot2(datalist=datalist, txtsize=int(6), base_size=int(18))
-    robjects.r.ggsave(plot=cont_plot2, filename=settings.MEDIA_ROOT+"/cont_plot2.png", width=15, height=6)
+    cont_plot1 = robjects.r.cont_plot1(datalist=datalist, txtsize=int(6), base_size=int(12))
+    robjects.r.ggsave(plot=cont_plot1, filename=settings.MEDIA_ROOT+"/cont_plot1.png", width=12, height=6)
+    cont_plot2 = robjects.r.cont_plot2(datalist=datalist, txtsize=int(6), base_size=int(12))
+    robjects.r.ggsave(plot=cont_plot2, filename=settings.MEDIA_ROOT+"/cont_plot2.png", width=12, height=6)
 
     con_combined=robjects.r.combine_conplots(cont_plot1,cont_plot2)
     robjects.r.ggsave(plot=con_combined, filename=settings.MEDIA_ROOT+"/con_combined.png", width=15, height=12)
 
 
-    runtimes = con_combined=robjects.r.runtimes(datalist=datalist, linesize=int(2), base_size=int(18))
-    robjects.r.ggsave(plot=runtimes, filename=settings.MEDIA_ROOT+"/runtimes.png", width=15, height=6)
+    runtimes = con_combined=robjects.r.runtimes(datalist=datalist, linesize=int(2), base_size=int(14))
+    robjects.r.ggsave(plot=runtimes, filename=settings.MEDIA_ROOT+"/runtimes.png", width=14, height=6)
 
-    pendingtimes = con_combined=robjects.r.pendingtimes(datalist=datalist, linesize=int(2), base_size=int(18))
-    robjects.r.ggsave(plot=pendingtimes, filename=settings.MEDIA_ROOT+"/pendingtimes.png", width=15, height=6)
+    pendingtimes = con_combined=robjects.r.pendingtimes(datalist=datalist, linesize=int(2), base_size=int(14))
+    robjects.r.ggsave(plot=pendingtimes, filename=settings.MEDIA_ROOT+"/pendingtimes.png", width=14, height=6)
     
     pending_run_combined=robjects.r.combine_conplots(runtimes,pendingtimes)
     robjects.r.ggsave(plot=pending_run_combined, filename=settings.MEDIA_ROOT+"/pending_run_combined.png", width=20, height=12)
@@ -182,7 +182,7 @@ def publicdash(request):
     util_per_day_cpu=con_combined=robjects.r.util_per_day_cpu(datalist=datalist, base_size=int(18))
     robjects.r.ggsave(plot=util_per_day_cpu, filename=settings.MEDIA_ROOT+"/util_per_day_cpu.png", width=15, height=6)
 
-    util_per_day_gpu=con_combined=robjects.r.util_per_day_cpu(datalist=datalist, base_size=int(18))
+    util_per_day_gpu=con_combined=robjects.r.util_per_day_gpu(datalist=datalist, base_size=int(18))
     robjects.r.ggsave(plot=util_per_day_gpu, filename=settings.MEDIA_ROOT+"/util_per_day_gpu.png", width=15, height=6)
 
     util_combined=robjects.r.combine_conplots(util_per_day_cpu,util_per_day_gpu)
@@ -256,19 +256,31 @@ embed-resources: true
     qmd.write('\n')
 
     # slide
-    qmd.write("## Jobs and CPU/GPU hours used {.centerhead}\n")
-    l = '![](con_combined.png){height="%s"}\n' % str(slide_image_size)
+    qmd.write("## Jobs and CPU hours used {.centerhead}\n")
+    l = '![](cont_plot1.png){height="%s"}\n' % str(slide_image_size)
     qmd.write(l)
     qmd.write('\n')    
 
     # slide
-    qmd.write("## Job run and pending times {.centerhead}\n")
-    l = '![](pending_run_combined.png){height="%s"}\n' % str(slide_image_size)
+    qmd.write("## Jobs and GPU hours used {.centerhead}\n")
+    l = '![](cont_plot2.png){height="%s"}\n' % str(slide_image_size)
+    qmd.write(l)
+    qmd.write('\n') 
+
+    # slide
+    qmd.write("## Job run times {.centerhead}\n")
+    l = '![](runtimes.png){height="%s"}\n' % str(slide_image_size)
     qmd.write(l)    
     qmd.write('\n')   
 
     # slide
-    qmd.write("## Job run and pending times {.centerhead}\n")
+    qmd.write("## Job pending times {.centerhead}\n")
+    l = '![](pendingtimes.png){height="%s"}\n' % str(slide_image_size)
+    qmd.write(l)    
+    qmd.write('\n')   
+
+    # slide
+    qmd.write("## Job pending times {.centerhead}\n")
     l = '![](pending_combined.png){height="%s"}\n' % str(slide_image_size)
     qmd.write(l)  
     qmd.write('\n') 
