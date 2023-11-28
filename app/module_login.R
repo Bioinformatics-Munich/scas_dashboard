@@ -63,14 +63,16 @@ validate_pwd <- function(input, output, session, user_col, pwd_col) {
     apiurlclus=paste0("http://",dbhostname,"/api/clusters/")
     resclus = GET(apiurlclus,authenticate(input$ti_user_name_module, input$ti_password_module))  
 
-    if ( (status_code(respart) == 200) && (status_code(resclus) == 200) ) {
+    # Get the Partitions tooltips
+    apiurltooltips=paste0("http://",dbhostname,"/api/partitionstooltips/")
+    restooltips = GET(apiurltooltips,authenticate(input$ti_user_name_module, input$ti_password_module))     
+    
+    if ( (status_code(respart) == 200) && (status_code(resclus) == 200) && (status_code(restooltips) == 200) ) {
       
       
       # get partitions
       partitionsjson <- fromJSON(rawToChar(respart$content))
       vectorize_fromJSON <- Vectorize(fromJSON)
-
-      #partitions <<- as.data.frame(vectorize_fromJSON(partitionsjson))[,1]
       
       partitions <<- tryCatch({
         as.data.frame(vectorize_fromJSON(partitionsjson))[,1]
@@ -78,7 +80,17 @@ validate_pwd <- function(input, output, session, user_col, pwd_col) {
       error = function(err) {
         return("NA")
       })
-      
+ 
+      # get partitionstooltips
+      partitionstooltipsjson <- fromJSON(rawToChar(restooltips$content))
+
+      partitionstooltips <<- tryCatch({
+        as.data.frame(vectorize_fromJSON(partitionstooltipsjson))[,1]
+      },
+      error = function(err) {
+        return("NA")
+      })      
+           
       # get clusters
       clustersjson <- fromJSON(rawToChar(resclus$content))
       # clusters <<- as.data.frame(vectorize_fromJSON(clustersjson))[,1]    

@@ -15,7 +15,7 @@ library(scales)
 library(httr)
 library(jsonlite)
 library(shinyjs)
-
+library(shinyBS)
 # Switch off warnings
 # options(warn=-1)
 
@@ -543,9 +543,7 @@ server <- function(input, output, session) {
     )
     
   })   
-  
-  
-  
+
   # This checks the login
   # validate_password_module checks the login and loads the data and partitions
   # inserts the partitions in the ui
@@ -553,12 +551,13 @@ server <- function(input, output, session) {
     
     # only proceeds if True
     req(validate_password_module())
-    checkboxGroupInput("checkGroup", 
+    tipify(checkboxGroupInput("checkGroup", 
                        h3("Slurm partitions"), 
                        choices = partitions,
-                       selected = partitions)
+                       selected = partitions),partitionstooltips)
   })
-
+  
+  #bsTooltip("Partitions", "Tooltip works", placement = "bottom", trigger = "hover", options = NULL)
   output$Clusters <- renderUI({
     
     # only proceeds if True
@@ -568,9 +567,9 @@ server <- function(input, output, session) {
                        choices = clusters,
                        selected = clusters)
   })  
-  
+
   # reacitive
-  #datalist=reactive(get_datalist(res=res,partitions = input$checkGroup , clusters_selected = input$checkGroupClus))
+  # datalist=reactive(get_datalist(res=res,partitions = input$checkGroup , clusters_selected = input$checkGroupClus))
     
   
   # The username and pass are set as global variables in the module_login when the user logs in

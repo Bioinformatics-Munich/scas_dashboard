@@ -5,17 +5,6 @@ FROM rocker/shiny:4.0.5
 
 RUN apt-get update && apt-get install -y nano python3 python3-dev python3-pip libpq-dev libcurl4-gnutls-dev libssl-dev && apt-get clean all
 
-#RUN apt-get update && apt-get install -y \
-#    libcurl4-gnutls-dev \
-#    libssl-dev
-
-# install required R packages 
-RUN R -e 'install.packages(c(\
-"rmarkdown", "shiny","shinydashboard", "dplyr", "dplyr", "readr","ggplot2","here","stringr","DT","reshape2","RColorBrewer","patchwork","httr","jsonlite","shinyjs","Rcpp" \
-            ), \
-            repos="https://packagemanager.rstudio.com/cran/__linux__/focal/2022-12-27"\
-          )'
-
 # Install Quarto
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-linux-amd64.deb
 RUN apt install -y -f ./quarto-1.3.450-linux-amd64.deb
@@ -26,6 +15,9 @@ WORKDIR /usr/src/backend
 
 # Copy the app
 ADD ./app /usr/src/app
+
+# Install R packages
+RUN Rscript /usr/src/app/00_install_packages.R
 
 # Copy code to backend directory
 ADD ./backend /usr/src/backend

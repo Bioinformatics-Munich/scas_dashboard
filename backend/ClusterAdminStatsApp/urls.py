@@ -42,6 +42,7 @@ urlpatterns = [
     path('api/', views.JobsList),
     path('api/<int:pk>/', views.JobsDetail.as_view()),
     path('api/partitions/', views.PartitionList),
+    path('api/partitionstooltips/', views.PartitionTooltip),
     path('api/clusters/', views.ClusterList),    
     path('api/nodes/', views.NodesList),
     path('api/index/', views.Index),

@@ -369,6 +369,22 @@ def JobsListInternal(fromdate="2022-01-01",todate="2023-01-01"):
 
 
 ####### API ##########
+
+@api_view(['GET'])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticated])
+def PartitionTooltip(request):
+    """
+    Send partitions Tooltip
+    """
+    if request.method == 'GET':
+        # Get settings
+        obj = Settings.objects.get(name="partitions_tooltip")
+        partitions_tooltip_value = getattr(obj, "value")
+        print("partitions_tooltip_value: "+ partitions_tooltip_value)
+        return Response(json.dumps(partitions_tooltip_value))
+
+
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 @permission_classes([IsAuthenticated])

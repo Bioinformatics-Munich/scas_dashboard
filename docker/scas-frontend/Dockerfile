@@ -6,16 +6,12 @@ RUN apt-get update && apt-get install -y \
     libcurl4-gnutls-dev \
     libssl-dev
 
-# install required R packages
-RUN R -e 'install.packages(c(\
-"rmarkdown", "shiny","shinydashboard", "dplyr", "readr","ggplot2","here","stringr","DT","reshape2","RColorBrewer","patchwork","httr","jsonlite","shinyjs","Rcpp" \
-            ), \
-            repos="https://packagemanager.rstudio.com/cran/__linux__/focal/2022-12-27"\
-          )'
-
 # copy the app directory into the image
 COPY ./app/* /srv/shiny-server/
 ADD ./app/www /srv/shiny-server/www
+
+# Install R packages
+RUN Rscript /srv/shiny-server/00_install_packages.R
 
 # copy Renv file
 COPY ./docker/scas-frontend/.Renviron /srv/shiny-server/.Renviron

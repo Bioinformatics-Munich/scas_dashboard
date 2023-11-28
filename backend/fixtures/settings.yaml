@@ -46,3 +46,9 @@
     name: slide_image_size
     value: 1000
     description: Slide image height size must be in px    
+- model: ClusterAdminStatsApp.Settings
+  pk: 9
+  fields:
+    name: partitions_tooltip
+    value: Partion descriptions:<br>none added so far
+    description: Tooltip for partitions
