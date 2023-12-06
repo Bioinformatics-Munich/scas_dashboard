@@ -4,7 +4,7 @@ from django.conf import settings
 
 class Settings(models.Model):
     name=models.CharField(max_length=150, unique=True)
-    value=models.CharField(max_length=150)
+    value=models.CharField(max_length=1500)
     description=models.CharField(max_length=350)
     def __str__(self):
         return str(self.name)

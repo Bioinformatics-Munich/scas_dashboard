@@ -116,7 +116,7 @@ See --help for further options.
 If you want to exclude certain partitions from the dashboard, go to https://yourserver.edu/admin/ --> ExcludePartition  
 
 ## API documentation
-The backend API documentation is available from https://yourserver.edu/docs/  
+The backend API documentation is available from https://yourserver.edu/docs/ (application needs to be running) and from [https://bioinformatics-munich.github.io/scas_dashboard_api_documentation](https://bioinformatics-munich.github.io/scas_dashboard_api_documentation).  
 
 ## License  
 SCAS dashboard is provided under the MIT license. See LICENSE.md file for the full text.
