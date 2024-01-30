@@ -48,6 +48,10 @@ To build: `docker compose build`
 Run in detached mode: `docker compose up -d`   
 Forced rebuild of images: `docker compose build --no-cache`  
 
+**Note:** If you are using a MacBook with Apple Silicon Arm processors you will need to explicity tell
+Docker to use the x86 versions of the containers by adding the command
+`export DOCKER_DEFAULT_PLATFORM=linux/amd64` before you run any `docker compose` commands.
+
 # Initial setup with test data
 This setup is intended for testing and will load the test data.  
 ```
