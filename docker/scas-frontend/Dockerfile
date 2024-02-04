@@ -16,5 +16,9 @@ RUN Rscript /srv/shiny-server/00_install_packages.R
 # copy Renv file
 COPY ./docker/scas-frontend/.Renviron /srv/shiny-server/.Renviron
 
+# copy print_log.sh
+COPY ./docker/scas-frontend/print_log.sh /print_log.sh
+RUN chmod 755 /print_log.sh
+
 # run app
 CMD ["/usr/bin/shiny-server"]

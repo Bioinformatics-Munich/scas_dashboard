@@ -122,8 +122,26 @@ If you want to exclude certain partitions from the dashboard, go to https://your
 ## API documentation
 The backend API documentation is available from https://yourserver.edu/docs/ (application needs to be running) and from [https://bioinformatics-munich.github.io/scas_dashboard_api_documentation](https://bioinformatics-munich.github.io/scas_dashboard_api_documentation).  
 
-## License  
-SCAS dashboard is provided under the MIT license. See LICENSE.md file for the full text.
+## Contributor guidelines  
 
-# Questions and Contributions 
-Please open an issue if you encounter any problems, or have any feature requests.  
+Thank you for your interest and time contributing to this project.  
+Note that all contributions must be complied with the [CODE OF CONDUCT](CODE_OF_CONDUCT.md).  
+Contributions are welcome and greatly appreciated! To contribute, please follow the following guidelines:  
+
+### Reporting issues 
+
+* Check that the issue has not already been reported on the [issue tracker](https://github.com/Bioinformatics-Munich/scas_dashboard/issues).  
+* Submit an issue on the [issue tracker](https://github.com/Bioinformatics-Munich/scas_dashboard/issues) using the corresponding form.  
+
+### Feature requests  
+
+* Check that the feature request has not already been reported on the [issue tracker](https://github.com/Bioinformatics-Munich/scas_dashboard/issues).  
+* Submit a feature request on the [issue tracker](https://github.com/Bioinformatics-Munich/scas_dashboard/issues) using the corresponding form.  
+
+### Contributing  
+
+Any contributions are welcomed. Please see [CONTRIBUTIONS.md](CONTRIBUTIONS.md) for the details.
+
+## License  
+
+SCAS dashboard is provided under the MIT license. See [LICENSE.md](LICENSE.md) file for the full text.
