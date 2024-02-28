@@ -71,12 +71,19 @@ scheduling system for Linux-based compute clusters and is widely used
 for High Performance Computing (HPC). It offers command line tools to
 export and analyze cluster use and various applications have been
 developed to monitor the current state of the cluster (e.g. live
-dashboards using Grafana [@grafanadb]). However, intuitive,
-responsive and easy-to-use applications that enable HPC administrators
-and managers to analyze and visualize cluster usage in detail and over
-time are lacking. This information is crucial to identify bottlenecks in
-compute clusters and make informed strategic decisions regarding their
-future development.
+dashboards using Grafana [@grafanadb]). A feature rich tool for the
+analysis of cluster performance is Open XDMoD [@xdmod] that supports
+various schedulers and metrics. Open XDMoD uses 3^rd^ party software
+libraries that are not free for commercial use. Open OnDemand
+[@Hudak2018] allows users to access a HPC cluster using a web portal,
+it provides various apps to facilitate HPC usage and can integrate the
+Open XDMoD for usage statistics. Both, Open XDMoD and Open OnDemand
+require continuous support and extensive configurations and therefore,
+intuitive, responsive, easy-to-install and easy-to-use applications that
+enable HPC administrators and managers to analyze and visualize cluster
+usage in detail and over time are highly complementary. This information
+is crucial to identify bottlenecks in compute clusters and make informed
+strategic decisions regarding their future development.
 
 To address this, we developed the Slurm Cluster Admin Statistics (SCAS)
 dashboard, a scalable and flexible dashboard application to analyze
@@ -210,7 +217,7 @@ The repository also contains a docker-compose file for rapid deployment
 and testing of the software, as well as a program to generate test data
 for the dashboard.
 
-# Acknowledgements 
+# Acknowledgements
 
 We acknowledge the Institute of Computational Biology (Prof. Dr. Dr.
 Fabian Theis) at Helmholtz Munich for supporting the development of the
