@@ -70,14 +70,14 @@ Slurm [@slurm] is an open-source cluster management and job
 scheduling system for Linux-based compute clusters and is widely used
 for High Performance Computing (HPC). It offers command line tools to
 export and analyze cluster use and various applications have been
-developed to monitor the current state of the cluster (e.g. live
-dashboards using Grafana [@grafanadb]). A feature rich tool for the
-analysis of cluster performance is Open XDMoD [@xdmod] that supports
-various schedulers and metrics. Open XDMoD uses 3^rd^ party software
+developed to monitor the current state of the cluster (e.g., live
+dashboards using Grafana [@grafanadb]). A feature-rich tool for the
+analysis of cluster performance is Open XDMoD [@xdmod], which supports
+various schedulers and metrics. Open XDMoD uses 3rd-party software
 libraries that are not free for commercial use. Open OnDemand
 [@Hudak2018] allows users to access a HPC cluster using a web portal,
 it provides various apps to facilitate HPC usage and can integrate the
-Open XDMoD for usage statistics. Both, Open XDMoD and Open OnDemand
+Open XDMoD for usage statistics. Both Open XDMoD and Open OnDemand
 require continuous support and extensive configurations and therefore,
 intuitive, responsive, easy-to-install and easy-to-use applications that
 enable HPC administrators and managers to analyze and visualize cluster
@@ -99,15 +99,15 @@ using docker containers and a docker-compose implementation.
 ## SCAS Dashboard overview
 
 The SCAS dashboard architecture consists of a nginx web server as a
-router (reverse proxy), a frontend based on R-Shiny [@shiny; @R;
-@shinydashboard], a backend based on Python using the Django REST
-framework to provide an API, and a PostgreSQL database as backend (see
-\autoref{fig:fig1}). The dashboard is intended for the HPC stakeholders
-and therefore includes secure user authentication. The frontend is a
+router (reverse proxy), a front end based on R-Shiny [@shiny; @R;
+@shinydashboard], a back end based on Python using the Django REST
+framework to provide an API, and a PostgreSQL database as back end (see
+\autoref{fig:fig1}). The dashboard is intended for HPC stakeholders
+and therefore includes secure user authentication. The front end is a
 user-friendly interface for filtering and visualizing the Slurm data.
-The backend provides an admin interface via Python Django Admin and a
-web API that is used by both the frontend and a script for uploading new
-data. Additionally, the backend creates a daily index of the data,
+The back end provides an admin interface via Python Django Admin and a
+web API that is used by both the front end and a script for uploading new
+data. Additionally, the back end creates a daily index of the data,
 enabling the software to maintain a low memory footprint while being
 fast and responsive. Furthermore, a presentation can be generated
 automatically and viewed by various stakeholders, including the cluster
@@ -128,12 +128,12 @@ width=100% }
 Completed compute jobs and available node configurations are submitted
 to the SCAS-backend API with a script that utilizes the Slurm's *sacct*
 tool. This script can be run as a daily or weekly *cron* job on a job
-submission node. The backend then generates the daily statistics that
+submission node. The back end then generates the daily statistics that
 are stored in the database. This preprocessed indexed data enables the
 app to have a low memory footprint and high responsiveness, as no
 calculations are required when the data is fetched from the API. Upon
-filtering a date range in the frontend, a request is sent to the backend
-which retrieves the data for the selected days and aggregates the
+filtering a date range in the front end, a request is sent to the back end
+that retrieves the data for the selected days and aggregates the
 statistics to generate the visualizations.
 
 ## Frontend -- dashboard user interface
@@ -179,7 +179,7 @@ pending times) for GPU servers, with 16 GPUs, over a time frame of 1
 year. As shown in \hyperref[fig:fig2]{Figure 2b,c}, the increase in
 the number of GPU jobs and CPU hours for the GPU partition is visible
 and confirms the assumption. By inspecting the pending times per day
-(\hyperref[fig:fig2]{Figure 2d}) there is a general, unbiased
+(\hyperref[fig:fig2]{Figure 2d}), there is a general, unbiased
 increase of the pending times visible for the last few months. From
 \hyperref[fig:fig2]{Figure 2e} we can then see an increase of the
 pending times for the GPU partition for the previous 6 months.
@@ -187,7 +187,7 @@ pending times for the GPU partition for the previous 6 months.
 times is only seen for servers with >10 GPUs, and the utilization of
 the nodes with 16 GPUs has increased while those with 2 and 4 GPUs were
 stable (\hyperref[fig:fig2]{Figure 2g}). This analysis can be used to
-draw concrete conclusions. In this case to either inform the users that
+draw concrete conclusions, in this case, to either inform the users that
 resources are available if up to 4 GPUs are requested, or to make the
 decision to invest in new GPU servers to achieve shorter pending times
 and higher throughput.
@@ -209,7 +209,7 @@ plot showing the utilization of nodes with different numbers of GPUs.
 The SCAS dashboard enables rapid and responsive analysis of Slurm-based
 cluster usage. This allows stakeholders: I) to identify current
 bottlenecks of CPU and GPU utilization, II) to make informed decisions
-to adapt SLURM parameters in the short term and III) to support
+to adapt SLURM parameters in the short term, and III) to support
 strategic decisions, all based on user needs. The SCAS dashboard, code,
 and the documentation are hosted on a publicly available GitHub
 repository (<https://github.com/Bioinformatics-Munich/scas_dashboard>).
