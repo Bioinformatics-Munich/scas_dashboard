@@ -1,4 +1,5 @@
 # Slurm Cluster Admin Stats (SCAS) dashboard
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.06017/status.svg)](https://doi.org/10.21105/joss.06017)
 
 The Slurm Cluster Admin Stats (SCAS) dashboard has been developed to analyze the usage statistics of Slurm based HPC clusters.  
 It provides various statistics, their visualizations, and insights to the HPC stakeholders and cluster users.  
